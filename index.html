@@ -6,5 +6,22 @@
   </head>
   <body>
     <p>自宅の地図です。</p>
+    
+    <div id="map" style="width:620px; height:400px"></div>
+    
+    <script type="text/javascript">
+    function initMap() {
+      var opts = {
+        zoom: 15,
+        center: new google.maps.LatLng(35.709984,139.810703)
+      };
+      var map = new google.maps.Map(document.getElementById("map"), opts);
+    }
+    </script>
+    
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0Jgen-d_bKoP5JudqvI_fKOR3Hq-aQoM&callback=initMap">
+    </script>
+    
   </body>
 </html>
