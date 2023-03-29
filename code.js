@@ -1,5 +1,5 @@
 function initialize() {
-  var map = new GMap2(document.getElementById("map_canvas"));
+  var map = new google.maps.Map(document.getElementById("map_canvas"));
   map.setCenter(new GLatLng(35.172999,136.897057), 12);
 
   var manager = new GMarkerManager(map);
