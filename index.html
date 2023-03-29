@@ -23,13 +23,23 @@ body{
     var activeWindow;
     function initMap() {
 
-        // 経緯緯度、吹き出しセット
+        // ①経緯緯度、吹き出しセット
         var markerData = [
             {
                 lat: 35.68124598429957,
                 lng: 139.7671147395538,
-                content: 'ここに吹き出しがでてきます',
-            }
+                content: 'マーカー1です',
+            },
+            {
+                lat: 35.68961484942353,
+                lng: 139.70055520456194,
+                content: 'マーカー2です',
+            },
+            {
+                lat: 35.65804859053836,
+                lng: 139.7016297632016,
+                content: 'マーカー3です',
+            },
         ];
 
         // 地図の設定
@@ -43,16 +53,31 @@ body{
         });
 
         // マーカーの作成
-        marker = new google.maps.Marker({
-            position: latlng,
-            map: map
-        });
+         for (var i = 0; i < markerData.length; i++) {
 
-        // 吹き出しの追加
-        infoWindow = new google.maps.InfoWindow({
-         content: markerData[0]['content']
-        });
-        infoWindow.open(map, marker);
+            markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']});
+            marker[i] = new google.maps.Marker({
+                position: markerLatLng,
+                map: map,
+            });
+
+            infoWindow[i] = new google.maps.InfoWindow({
+                content: markerData[i]['content']
+            });
+
+             markerEvent(i);
+         }
+    }
+
+    // マーカーにクリックイベントを追加
+    function markerEvent(i) {
+        marker[i].addListener('click', function() {
+            if(activeWindow !== undefined){
+                activeWindow.close();
+            }
+            activeWindow = infoWindow[i];
+            infoWindow[i].open(map, marker[i]);
+      });
     }
 </script>
 </body>
