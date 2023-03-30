@@ -33,6 +33,16 @@ function initMap() {
       infoWindow.close();
       infoWindow.setContent(marker.getTitle());
       infoWindow.open(marker.getMap(), marker);
+      
+      //クリックしたらマーカーの色を変える（テスト）
+      
+      
+      //スプレッドシートを更新する
+      
+      
+      //
+      
+      
     });
   });
 }
